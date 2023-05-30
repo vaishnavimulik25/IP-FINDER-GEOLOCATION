@@ -1,0 +1,43 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+CC	Makefile	/^CC = gcc$/;"	m
+CurlResponse	headers.h	/^} CurlResponse;$/;"	t	typeref:struct:__anon1
+IP	headers.h	/^	char* IP;$/;"	m	struct:sftnode
+M	headers.h	8;"	d
+constructsft	sftnode.c	/^sft* constructsft(sftnode* node,sftnode** pointer){$/;"	f
+count	headers.h	/^	int count;$/;"	m	struct:sft
+data	headers.h	/^	int data;$/;"	m	struct:sftnode
+data	headers.h	/^    char* data;$/;"	m	struct:__anon1
+fetch_geolocation	finder.c	/^void fetch_geolocation(char* ipAddress) {$/;"	f
+getParent	sftnode.c	/^sftnode* getParent(sftnode* root,sftnode* node){$/;"	f
+initializeFingertable	schord.c	/^sft* initializeFingertable(sftnode** pointer,sftnode* node)$/;"	f
+initializeNode	schord.c	/^sftnode* initializeNode(int nodeId,char* IP)$/;"	f
+insertintoSplayTree	sftnode.c	/^void insertintoSplayTree(sft* sft,sftnode* node){$/;"	f
+isBetween	schord.c	/^int isBetween(int value,int start,int end){$/;"	f
+joinSchordNetwork	schord.c	/^void joinSchordNetwork(sftnode* node,sftnode** pointer)$/;"	f
+left	headers.h	/^	struct sftnode* left;	\/\/for schord circle$/;"	m	struct:sftnode	typeref:struct:sftnode::sftnode
+lookupipaddress	schord.c	/^char* lookupipaddress(sftnode** pointer,int nodeId,int data){$/;"	f
+m	headers.h	9;"	d
+main	main.c	/^int main()$/;"	f
+makeschordcircle	schord.c	/^void makeschordcircle(sftnode** pointer,int nodeId,char * IP){$/;"	f
+max	headers.h	/^	int max;$/;"	m	struct:sft
+min	headers.h	/^	int min;$/;"	m	struct:sft
+nodeId	headers.h	/^	int nodeId; \/\/for insertion in splay tree$/;"	m	struct:sftnode
+predecessor	headers.h	/^	struct sftnode* predecessor;	\/\/for splaytree predecessor$/;"	m	struct:sftnode	typeref:struct:sftnode::sftnode
+right	headers.h	/^	struct sftnode* right;$/;"	m	struct:sftnode	typeref:struct:sftnode::sftnode
+rotateLeft	sftnode.c	/^void rotateLeft(sft *t, sftnode *x)\/\/ll rotation in avl$/;"	f
+rotateRight	sftnode.c	/^void rotateRight(sft *t, sftnode *x)\/\/rr rotation$/;"	f
+searchnodeByIp	sftnode.c	/^sftnode* searchnodeByIp(sft* sft1,int nodeId,int data)$/;"	f
+sft	headers.h	/^typedef struct sft{$/;"	s
+sft	headers.h	/^}sft;$/;"	t	typeref:struct:sft
+sftnode	headers.h	/^typedef struct sftnode{$/;"	s
+sftnode	headers.h	/^}sftnode;$/;"	t	typeref:struct:sftnode
+size	headers.h	/^    size_t size;$/;"	m	struct:__anon1
+splay	sftnode.c	/^void splay(sft* sft1,sftnode* node){$/;"	f
+splaytreeroot	headers.h	/^	struct sftnode* splaytreeroot;$/;"	m	struct:sft	typeref:struct:sft::sftnode
+tree	headers.h	/^	struct sft* tree;$/;"	m	struct:sftnode	typeref:struct:sftnode::sft
+write_callback	finder.c	/^size_t write_callback(void *contents, size_t size, size_t nmemb, void *userp) {$/;"	f
