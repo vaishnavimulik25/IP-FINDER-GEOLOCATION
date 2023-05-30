@@ -8,12 +8,12 @@ int main()
 {
 	printf("\n\n\n");
 	printf("******************************************************************************************************************************************\n");
+	printf("\n\n");//p2p networkch asatate ka bagh write something powerfull
+	printf("*                                                       WELCOME TO P2P NETWORK                                                      *\n");
 	printf("\n\n");
-	printf("*                                                       WELCOME TO MINI P2P NETWORK                                                      *\n");
+	printf("*                                                               *\n");
 	printf("\n\n");
-	printf("*                                   Simplified Image of Schord DataStructure used to simulate the P2P network                            *\n");
-	printf("\n\n");
-	printf("*                                          There are 8 people in our network having nodeIds from 0 to 8                                  *\n");
+	printf("*                                                                           *\n");
 	printf("\n\n");
 	printf("*                         If you want to send any numerical code from your Id to your friend's Id Please be our Guest:)                  *\n");
 	printf("\n\n");
@@ -44,68 +44,72 @@ int main()
 	}
 
 	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
+
 	while(1){
-	
-	int a,b,data;//data TODO
-	
-	//ask for lookup sender's and receiver's id,data
-	printf("Enter Sender's Node ID value(positive integer)\n");
-	scanf("%d",&a);
-	printf("\n");
-	printf("Enter Receiver's Node ID value(positive integer)\n");
-	scanf("%d",&b);
-	printf("\n");
-	printf("Enter data to be send(positive integer)\n");//for data TODO
-	scanf("%d",&data);
-	printf("\n");
+		int a,b,data;//data TODO
 
-	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
-
-	//lookup
-	clock_t start,end;
-	char* ip1 = lookupipaddress(schordcirclepointer,a,0);//TODO
-	start = clock();
-	char* ip2 = lookupipaddress(schordcirclepointer,b,data);
-	end = clock();
-
-
-	//call fetchgeolocation;
-	printf("sender's IP Address %s\n\n",ip1);
-	printf("receiver's IP Address %s\n\n",ip2);
-
-	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
-
-	if(ip1 && ip2){
+		//ask for lookup sender's and receiver's id,data
+		printf("Enter Sender's Node ID value(positive integer)\n");
+		scanf("%d",&a);
 		printf("\n");
-		printf("Data is successfully send\n\n");
-
-		printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
-
+		printf("Enter Receiver's Node ID value(positive integer)\n");
+		scanf("%d",&b);
 		printf("\n");
-		printf("Time Required for searching Receiver's node %fsec\n",((double)(end - start))/CLOCKS_PER_SEC);
+		printf("Enter data to be send(positive integer)\n");//for data TODO
+		scanf("%d",&data);
 		printf("\n");
 
 		printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
 
-		printf("Geolocation of Sender Node: \n\n");
-		fetch_geolocation(ip1);
+		//lookup
+		clock_t start,end;
+		char* ip1 = lookupipaddress(schordcirclepointer,a,0);//TODO
+		start = clock();
+		char* ip2 = lookupipaddress(schordcirclepointer,b,data);
+		end = clock();
+
+
+		//call fetchgeolocation;
+		printf("sender's IP Address %s\n\n",ip1);
+		printf("receiver's IP Address %s\n\n",ip2);
 
 		printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
 
-		printf("\n");
+		if(ip1 && ip2){
+			printf("\n");
+			printf("Data is successfully send\n\n");
 
-		printf("Geolocation of Receiver Node: \n\n");
-		fetch_geolocation(ip2);
+			printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
 
-		printf("\n");
+			printf("\n");
+			printf("Time Required for searching Receiver's node %fsec\n",((double)(end - start))/CLOCKS_PER_SEC);
+			printf("\n");
 
-		free(schordcirclepointer);
-		printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
+			printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
+
+			printf("Geolocation of Sender Node: \n\n");
+			fetch_geolocation(ip1);
+
+			printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
+
+			printf("\n");
+
+			printf("Geolocation of Receiver Node: \n\n");
+			fetch_geolocation(ip2);
+
+			printf("\n");
+
+			printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
+		}
+
+		else
+			printf("Please enter numerical values for nodeId");
+		//free memory for other responses 
+//		free(ip1);
+//		free(ip2);
 	}
 
-	else
-		printf("Please enter numerical values for nodeId");
-	}
+	free(schordcirclepointer);
 
 	return 0;
 }

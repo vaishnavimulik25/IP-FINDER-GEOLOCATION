@@ -2,6 +2,7 @@
 #include<stdlib.h>
 #include<string.h>
 #include"headers.h"
+#include<math.h>
 
 //function to construct sft for a node
 sft* constructsft(sftnode* node,sftnode** pointer){
@@ -10,14 +11,15 @@ sft* constructsft(sftnode* node,sftnode** pointer){
 	sft* sft1 = (sft*)malloc(sizeof(sft));
 	if(!sft1)
 		return NULL;
-
+	
 	sft1->splaytreeroot = NULL;
-
-	//called this after making schord circle
-	for(int i = 0;i < M;i++){
-		int successorId = (node->nodeId + (1<<i))%(1<<M);
+	node->tree = sft1;
+	
+	//called this after making schord circle It makes a tree for a node
+	for(int i = 0;i < M; i++){
+		int successorId = ((int)(node->nodeId + pow(2,i)))%(m-1);
 		sftnode* successor = pointer[successorId];
-		insertintoSplayTree(sft1,successor);
+		insertintoSplayTree(node->tree,successor);
 	}
 
 	return sft1;
@@ -44,6 +46,7 @@ void insertintoSplayTree(sft* sft,sftnode* node){
 				current->left = node;
 				node->left = NULL;
 				node->right = NULL;
+				//currently inserted node is root 
 				splay(sft,current->left);
 				sft->count++;
 				sft->max = node->nodeId;
@@ -70,6 +73,7 @@ void insertintoSplayTree(sft* sft,sftnode* node){
 
 //function to perform splaying operation in splaytree
 void splay(sft* sft1,sftnode* node){
+
 	while(node!=sft1->splaytreeroot){
 		sftnode* parent = getParent(sft1->splaytreeroot ,node);
 		sftnode* grandparent = getParent(sft1->splaytreeroot ,parent);
@@ -86,22 +90,25 @@ void splay(sft* sft1,sftnode* node){
 			}
 		}
 		else if(parent!= NULL && grandparent != NULL){
-			//zig-zag or zig-zig rotation
+			//zag-zag
 			if(node == parent->left && parent == grandparent->left){
 				rotateRight(sft1,grandparent);
 				rotateRight(sft1,parent);
 				sft1->splaytreeroot=node;
 			}
+			//zig-zig (double left rotation)
 			else if(node == parent->right && parent == grandparent->right){
 				rotateLeft(sft1,grandparent);
 				rotateLeft(sft1,parent);
 				sft1->splaytreeroot=node;
 			}
+			//zig-zag
 			else if(node == parent->right && parent == grandparent->left){
 				rotateLeft(sft1,parent);
 				rotateRight(sft1,grandparent);
 				sft1->splaytreeroot=node;
 			}
+			//zag-zig
 			else{
 				rotateRight(sft1,parent);
 				rotateLeft(sft1,grandparent);
@@ -177,22 +184,22 @@ sftnode* getParent(sftnode* root,sftnode* node){
 	
 
 	//empty tree
-	if(root==NULL || root==node)
+	if(root == NULL || root == node)
 		return NULL;
-	sftnode* parent=NULL;
-	sftnode* current=root;
+	sftnode* parent = NULL;
+	sftnode* current = root;
 
-	while(current!=NULL)
+	while(current != NULL)
 	{
-		if(current->nodeId==node->nodeId)
+		if(current->nodeId == node->nodeId)
 			return parent;
-		else if(current->nodeId>node->nodeId){
-			parent=current;
-			current=current->left;
+		else if(current->nodeId > node->nodeId){
+			parent = current;
+			current = current->left;
 		}
 		else{
-			parent=current;
-			current=current->right;
+			parent = current;
+			current = current->right;
 		}
 
 	}
@@ -212,6 +219,8 @@ sftnode* searchnodeByIp(sft* sft1,int nodeId,int data)
 	{
 		if(nodeId == current->nodeId )
 		{
+		//make receiver node as root Usage:if this node is visited more often
+		//then revisiting it becomes in O(1) in later lookups
 			splay(sft1,current);
 			//splay found node to root
 			current->data = data;

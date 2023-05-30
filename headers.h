@@ -5,8 +5,8 @@
 #include <curl/curl.h>
 #include<time.h>
 
-#define M 3
-#define m 8
+#define M 10
+#define m 100
 
 typedef struct {
     char* data;

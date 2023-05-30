@@ -11,7 +11,7 @@ void makeschordcircle(sftnode** pointer,int nodeId,char * IP){
 	else{
 		sftnode* node = initializeNode(nodeId,IP);
 		pointer[nodeId] = node;
-		node->predecessor = pointer[nodeId-1];
+		pointer[nodeId]->predecessor = pointer[nodeId-1];
 	}
 
 	
@@ -57,7 +57,7 @@ sft* initializeFingertable(sftnode** pointer,sftnode* node)
 
 
 
-int isBetween(int value,int end,int start){
+int isBetween(int value,int start,int end){
 
 	if(start<=end){
 		if(value>=start && value<=end)
@@ -75,12 +75,12 @@ char* lookupipaddress(sftnode** pointer,int nodeId,int data){
 	
 		for(int i=0; i<m; i++){
 			
-			if(isBetween(nodeId,pointer[i]->tree->max,pointer[i]->tree->min)){
+			if(isBetween(nodeId,pointer[i]->tree->min,pointer[i]->tree->max)){
 					//assuming that pointer[i] contains nodeId wala node in its splay tree
-					sftnode* node =searchnodeByIp(pointer[i]->tree,nodeId,data);
+					sftnode* node = searchnodeByIp(pointer[i]->tree,nodeId,data);
 					if(node){
 						char* str = (char*)malloc(sizeof(char)*12);
-						str	=node->IP;
+						str	= node->IP;
 						return str;
 					}
 			}
