@@ -9,11 +9,11 @@ int main()
 	printf("\n\n\n");
 	printf("******************************************************************************************************************************************\n");
 	printf("\n\n");//p2p networkch asatate ka bagh write something powerfull
-	printf("*                                                       WELCOME TO P2P NETWORK                                                      *\n");
+	printf("*                                                       WELCOME TO P2P NETWORK FOR                                                      *\n");
 	printf("\n\n");
-	printf("*                                                               *\n");
+	printf("*                                          MESSAGING NUMERICAL CODES TO 100 NODES IN OUR NETWORK                                        *\n");
 	printf("\n\n");
-	printf("*                                                                           *\n");
+	printf("*                                       WHICH WOULD DETECT THE LOCATION OF MALLICIOUS ACTOR'S LOCATION                                   *\n");
 	printf("\n\n");
 	printf("*                         If you want to send any numerical code from your Id to your friend's Id Please be our Guest:)                  *\n");
 	printf("\n\n");
